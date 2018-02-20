@@ -9,6 +9,9 @@ let totalMoney = 0;
 //coinReturn is the amount of money being returned to the customer
 let coinReturn = 0;
 
+//display is a string of words showing on the display
+let display = "INSERT COIN"
+
 vendingMachineFun.setVendingMach = function(array){
   vendingMach = array;
 }
@@ -35,6 +38,15 @@ vendingMachineFun.getCoinReturn = function() {
   return coinReturn;
 }
 
+vendingMachineFun.setDisplay = function(words) {
+  display = words;
+  return display;
+}
+
+vendingMachineFun.getDisplay = function() {
+  return display;
+}
+
 vendingMachineFun.addFood = function(itemName, price){
   let newFood = {[itemName]: price};
   vendingMach.push(newFood);
@@ -46,6 +58,7 @@ vendingMachineFun.insertCoin = function(coin){
   let newCoin = parseInt(coin);
   if (newCoin === 5 || newCoin === 10 || newCoin === 25){
     totalMoney = totalMoney + parseInt(coin);
+    display = `TOTAL: ${totalMoney}`;
   } else {
     coinReturn = coinReturn + newCoin;
     console.log(`Coin not accepted. Please insert a valid coin (5, 10, 25).`)

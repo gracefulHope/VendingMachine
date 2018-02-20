@@ -4,6 +4,7 @@ let assert = require('assert');
 let vending = [];
 let totalMoney = 0;
 let coinReturn = 0;
+let display = 'INSERT COIN';
 
 describe ('Math', function() {
   it('should test that 3 x 3 = 9', function(){
@@ -29,15 +30,34 @@ describe ('Vending Machine', function () {
     it('should accept a quarter', function (){
     	vendingMachineFun.setTotalMoney(0);
 	assert.equal(vendingMachineFun.insertCoin('25'), 25);
+    	assert.equal(vendingMachineFun.getDisplay(), "TOTAL: 25");
     })
     it('should reject a penny', function (){
 	vendingMachineFun.setTotalMoney(0);
 	assert.equal(vendingMachineFun.insertCoin('1'), 0);
     })
-    it('should reject a Canadian coin', function(){
+    it('should reject a dollar coin', function(){
 	vendingMachineFun.setTotalMoney(0);
-	assert.equal(vendingMachineFun.insertCoin('C25'), 0);
+	assert.equal(vendingMachineFun.insertCoin('100'), 0);
     }) 
+    it('should be able to add up lots of inserted coins', function(){
+    	vendingMachineFun.setTotalMoney(0);
+        vendingMachineFun.insertCoin('5');
+        vendingMachineFun.insertCoin('5');
+        vendingMachineFun.insertCoin('25');
+	vendingMachineFun.insertCoin('10');
+	assert.equal(vendingMachineFun.getTotalMoney(), 45);
+    })
+    it('should be able to accurately add up coins and reject bad coins', function(){
+	vendingMachineFun.setTotalMoney(0);
+	vendingMachineFun.insertCoin('5');
+	vendingMachineFun.insertCoin('1');
+	vendingMachineFun.insertCoin('25');
+	vendingMachineFun.insertCoin('100');
+	vendingMachineFun.insertCoin('25');
+	assert.equal(vendingMachineFun.getTotalMoney(), 55);
+    })
+
   })
 
   describe('Select Product', function (){
