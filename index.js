@@ -43,7 +43,13 @@ vendingMachineFun.addFood = function(itemName, price){
 }
 
 vendingMachineFun.insertCoin = function(coin){
-  totalMoney = totalMoney + parseInt(coin);
+  let newCoin = parseInt(coin);
+  if (newCoin === 5 || newCoin === 10 || newCoin === 25){
+    totalMoney = totalMoney + parseInt(coin);
+  } else {
+    coinReturn = coinReturn + newCoin;
+    console.log(`Coin not accepted. Please insert a valid coin (5, 10, 25).`)
+  }
   console.log(`Your total is now ${totalMoney}`);
   return totalMoney;
 }
