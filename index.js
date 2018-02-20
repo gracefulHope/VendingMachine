@@ -1,22 +1,51 @@
 let vendingMachineFun = {};
 
+//vendingMach is array full of objects {food: price}
 let vendingMach = [];
-//VendingMach is an array full of objects (item: price)
 
+//totalMoney is amount of money currently put into the vending machine
 let totalMoney = 0;
-let coinReturn = 'empty';
 
-vendingMachineFun.addFood = function(itemName, price){
-  let newFood = {[itemName]: price};
-  vendingMach.push(newFood});
-  console.log(`${itemName} has been added to the vending machine.`)
+//coinReturn is the amount of money being returned to the customer
+let coinReturn = 0;
+
+vendingMachineFun.setVendingMach = function(array){
+  vendingMach = array;
+}
+
+vendingMachineFun.getVendingMach = function(){
   return vendingMach;
 }
 
-vendingMachineFun.addCoin = function(coin){
-  totalMoney = totalMoney + parseInt(coin)
+vendingMachineFun.setTotalMoney = function(amount){
+  totalMoney = amount;
   return totalMoney;
-  console.log(`Your total is now ${totalMoney}`)
+}
+
+vendingMachineFun.getTotalMoney = function(){
+  return totalMoney;
+}
+
+vendingMachineFun.setCoinReturn = function(amount) {
+  coinReturn = amount;
+  return coinReturn;
+}
+
+vendingMachineFun.getCoinReturn = function() {
+  return coinReturn;
+}
+
+vendingMachineFun.addFood = function(itemName, price){
+  let newFood = {[itemName]: price};
+  vendingMach.push(newFood);
+  console.log(`${itemName} has been added to the vending machine.`);
+  return vendingMach;
+}
+
+vendingMachineFun.insertCoin = function(coin){
+  totalMoney = totalMoney + parseInt(coin);
+  console.log(`Your total is now ${totalMoney}`);
+  return totalMoney;
 }
 
 module.exports = vendingMachineFun;
