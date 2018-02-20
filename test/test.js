@@ -18,24 +18,24 @@ describe ('Math', function() {
 describe ('Vending Machine', function () {
   describe ('Accepts Coins', function () {
     it('should accept a nickel', function(){
-	totalMoney = 0;
+	vendingMachineFun.setTotalMoney(0);
 	assert.equal(vendingMachineFun.insertCoin('5'), 5);
   
     })
     it('should accept a dime', function (){
-	totalMoney = 0;
+	vendingMachineFun.setTotalMoney(0);
 	assert.equal(vendingMachineFun.insertCoin('10'), 10);
     })
     it('should accept a quarter', function (){
-    	totalMoney = 0;
+    	vendingMachineFun.setTotalMoney(0);
 	assert.equal(vendingMachineFun.insertCoin('25'), 25);
     })
     it('should reject a penny', function (){
-	totalMoney = 0;
+	vendingMachineFun.setTotalMoney(0);
 	assert.equal(vendingMachineFun.insertCoin('1'), 0);
     })
     it('should reject a Canadian coin', function(){
-	totalMoney = 0;
+	vendingMachineFun.setTotalMoney(0);
 	assert.equal(vendingMachineFun.insertCoin('C25'), 0);
     }) 
   })
